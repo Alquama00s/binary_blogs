@@ -20,7 +20,7 @@ oauth.register(
 
 def login(request):
     return oauth.auth0.authorize_redirect(
-        request, request.build_absolute_uri(reverse("authorize"))
+        request, request.build_absolute_uri(reverse("api/auth/authorize"))
     )
 
 def authorize(request):
@@ -29,7 +29,7 @@ def authorize(request):
     if(User.objects.filter(email=request.session.get('user')['userinfo']['email']).first() is None):
         new_user=User.fromAuth0(request.session.get('user')['userinfo'])
         new_user.save()
-    return redirect(request.build_absolute_uri(reverse("index")))
+    return redirect(request.build_absolute_uri(reverse("")))
 
 
 def logout(request):
@@ -39,22 +39,10 @@ def logout(request):
         f"https://{settings.AUTH0_DOMAIN}/v2/logout?"
         + urlencode(
             {
-                "returnTo": request.build_absolute_uri(reverse("index")),
+                "returnTo": request.build_absolute_uri(reverse("")),
                 "client_id": settings.AUTH0_CLIENT_ID,
             },
             quote_via=quote_plus,
         ),
     )
-
-
-def index(request):
-    return render(
-        request,
-        "index.html",
-        context={
-            "session": request.session.get("user"),
-            "pretty": json.dumps(request.session.get("user"), indent=4),
-        },
-    )
-
 
