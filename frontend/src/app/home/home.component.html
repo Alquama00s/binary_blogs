@@ -2,9 +2,14 @@
   <div class="title">
     Binary Blogs
   </div>
-  <div>
+  <div *ngIf="!isLoggedIn()">
     <button class="loginButton" (click)="login()">
       Login
+    </button>
+  </div>
+  <div *ngIf="isLoggedIn()">
+    <button class="loginButton" (click)="logout()">
+      Logout
     </button>
   </div>
 </div>
