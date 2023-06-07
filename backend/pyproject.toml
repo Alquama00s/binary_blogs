@@ -11,6 +11,9 @@ djangorestframework = "^3.14.0"
 Authlib = "^1.2.0"
 python-dotenv = "^1.0.0"
 requests = "^2.30.0"
+djangorestframework-simplejwt = "^5.2.2"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+PyJWT = "^2.7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
