@@ -16,5 +16,12 @@
 <div class="crousel">
 
   Welcome {{user?.name}}
-
+  <div *ngIf="isLoggedIn()">
+  <button class="loginButton" routerLink="/create-blog">
+    Start Writing
+  </button>
+  </div>
+</div>
+<div *ngFor="let blog of blogs" class="blog-list-container">
+  <app-blog-view  [blog]="blog"></app-blog-view>
 </div>

@@ -4,7 +4,7 @@ import { User } from '../models/user.model';
 import { BACKEND_URL } from '../constants/constants';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie';
-
+import { Blog } from '../models/blog.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +19,20 @@ export class BackendService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.get<User>(BACKEND_URL+"/api/user/get-user",{headers})
     
+  }
+
+  addBlog(title:string,description:string,content:string):Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.post(BACKEND_URL+"/api/blog/user-blogs",{
+      "title":title,
+      "description":description,
+      "content":content
+    },{headers})
+  }
+
+  getUserBlogs():Observable<Array<Blog>>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.get<Array<Blog>>(BACKEND_URL+"/api/blog/user-blogs",{headers})
   }
 
   login() {

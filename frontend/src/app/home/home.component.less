@@ -1,13 +1,6 @@
+@import '../common-styles/constants';
+@import '../common-styles/navbar';
 
-@background-color: #284549;
-@accent-color: #bd4a63;
-
-.navBar{
-  display: flex;
-  justify-content: space-between;
-  background-color: @background-color;
-  padding: 20px;
-}
 
 .loginButton{
   display: inline-block;
@@ -28,30 +21,20 @@
   background-color: @accent-color;
 }
 
-.title {
-  font-size: 32px;
-  font-weight: bold;
-  line-height: 1.2;
-  color: white;
-}
-
-.title::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background-color: @accent-color;
-  margin-top: 8px;
-}
-
 .crousel{
   width: 100%;
-  height: 2cm;
+  padding-bottom: 40px;
   background-color: @background-color;
   font-size: 32px;
   font-weight: bold;
   line-height: 1.2;
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content:center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-list-container{
+  padding: 10px;
 }

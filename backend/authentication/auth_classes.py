@@ -8,7 +8,8 @@ class Auth0Authentication(BaseAuthentication):
     def authenticate(self, request:Request):
         try:
           access_token_jwt=request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
-        #   print(access_token_jwt)
+          # access_token_jwt=request.session["user"]["id_token"]
+          # print(access_token_jwt)
           jwks_client = jwt.PyJWKClient('https://dev-jpwmi4c6wfbzcog1.us.auth0.com/.well-known/jwks.json')
           signing_key = jwks_client.get_signing_key_from_jwt(access_token_jwt)
           decoded=jwt.decode(access_token_jwt,key=signing_key.key,algorithms=['RS256'],audience='uQYdQ7etx0Ypi0LwVa2I6A7RIbRm94Ie')
