@@ -11,7 +11,7 @@ from urllib.parse import quote_plus, urlencode
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import generics
 from rest_framework.reverse import reverse
-from .authentication_backend import Auth0Authentication, Auth0IsAuthenticated
+from .auth_classes import Auth0Authentication, Auth0IsAuthenticated
 from user.models import User
 oauth = OAuth()
 
@@ -62,6 +62,7 @@ def authorize(request):
         new_user=User.fromAuth0(request.session.get('user')['userinfo'])
         new_user.save()
     resp = redirect(request.build_absolute_uri("http://localhost:4200"))
+    resp.set_cookie('token',token["id_token"])
     return resp
 
 def logout(request):

@@ -1,29 +1,30 @@
 import { Component, Renderer2 } from '@angular/core';
-import { CookieService } from 'ngx-cookie';
-
+import { User } from '../models/user.model';
+import { BackendService } from '../services/backend.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent {
-constructor(private renderer:Renderer2,private cookieService:CookieService){
-
+constructor(private renderer:Renderer2,private backendService:BackendService){
+  backendService.getUser().subscribe((data:User)=>
+  this.user = data
+  )
 }
 
+user:User|null=null
+
 isLoggedIn():boolean{
-  return this.cookieService.get('session') != undefined 
+  return this.user !=null
 }
 
 login() {
-  console.log("logging in")
-  window.location.href = 'http://localhost:8000/api/auth/login';
+  this.backendService.login()
 }
 
 logout() {
-  console.log("logging out")
-  this.cookieService.remove("session")
-  window.location.href = 'http://localhost:8000/api/auth/logout';
+  this.backendService.logout()
 }
 
 }
