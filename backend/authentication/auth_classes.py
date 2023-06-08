@@ -7,8 +7,8 @@ from rest_framework.request import Request
 class Auth0Authentication(BaseAuthentication):
     def authenticate(self, request:Request):
         try:
-          # access_token_jwt=request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
-          access_token_jwt=request.session["user"]["id_token"]
+          access_token_jwt=request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+          # access_token_jwt=request.session["user"]["id_token"]
           # print(access_token_jwt)
           jwks_client = jwt.PyJWKClient('https://dev-jpwmi4c6wfbzcog1.us.auth0.com/.well-known/jwks.json')
           signing_key = jwks_client.get_signing_key_from_jwt(access_token_jwt)

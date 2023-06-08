@@ -1,6 +1,6 @@
 <div class="navBar">
   <div class="title">
-    Binary Blogs
+    Binary Blogs 
   </div>
   <div *ngIf="!isLoggedIn()">
     <button class="loginButton" (click)="login()">
@@ -8,20 +8,27 @@
     </button>
   </div>
   <div *ngIf="isLoggedIn()">
-    <button class="loginButton" (click)="logout()">
-      Logout
-    </button>
+    <div class="profile-pic" [style.background-image]="'url(' + getUser()?.profile_url + ')'" routerLink="/profile" ></div>
   </div>
 </div>
 <div class="crousel">
 
-  Welcome {{user?.name}}
+  Welcome {{getUser()?.name}}
   <div *ngIf="isLoggedIn()">
   <button class="loginButton" routerLink="/create-blog">
     Start Writing
   </button>
   </div>
 </div>
+<div class="search-container">
+  <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchTerm">
+  <button class="search-button" (click)="resetSearch()">Search</button>
+</div>
+
 <div *ngFor="let blog of blogs" class="blog-list-container">
   <app-blog-view  [blog]="blog"></app-blog-view>
+</div>
+
+<div class="pagination">
+  <a [ngClass]="pageNumber==searchPage?'page-link-selected':'page-link'" *ngFor="let pageNumber of pages" href="#" (click)="goToPage(pageNumber)">{{ pageNumber }}</a>
 </div>

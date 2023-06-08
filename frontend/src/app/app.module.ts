@@ -11,6 +11,8 @@ import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { FormsModule } from '@angular/forms';
 import { BlogViewComponent } from './blog-view/blog-view.component';
 import { ReadBlogComponent } from './read-blog/read-blog.component';
+import { SettingsPageComponent } from './settings-page/settings-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { ReadBlogComponent } from './read-blog/read-blog.component';
     CreateBlogComponent,
     BlogViewComponent,
     ReadBlogComponent,
+    SettingsPageComponent,
+    FooterComponent,
 
   ],
   imports: [

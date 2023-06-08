@@ -2,7 +2,7 @@ export class User{
   constructor(
     public name:string,
     public email:string,
-    public profile_pic:string
+    public profile_url:string
   ){}
 
   toJSON():string{
