@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import User
+from user.models import User,PublicUserSerializer
 from rest_framework import serializers
 # Create your models here.
 
@@ -18,3 +18,23 @@ class BlogSerializer(serializers.ModelSerializer):
         model=Blog
         fields='__all__'
         read_only_fields=['publisher']
+
+
+
+class PublicBlogListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Blog
+        fields=['id','title','description']
+
+
+
+class PublicBlogSerializer(serializers.ModelSerializer):
+    author=serializers.SerializerMethodField()
+
+    def get_author(self,obj):
+        return PublicUserSerializer(obj.publisher).data
+
+
+    class Meta:
+        model=Blog
+        fields=['id','title','description','content','author']

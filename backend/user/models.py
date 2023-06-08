@@ -9,6 +9,7 @@ class User(AbstractUser, models.Model):
     name=models.CharField(max_length=100)
     email=models.EmailField(unique=True)
     profile_url=models.URLField()
+    password=models.CharField(max_length=50,null=True)
 
     @classmethod
     def fromAuth0(cls,userdata):
@@ -18,4 +19,9 @@ class User(AbstractUser, models.Model):
 class UserSerializer(ModelSerializer):
     class Meta:
         model=User
-        fields=['name','email','profile_url']
+        fields=['id','username','name','email','profile_url']
+
+class PublicUserSerializer(ModelSerializer):
+    class Meta:
+        model=User
+        fields=['name','profile_url']
