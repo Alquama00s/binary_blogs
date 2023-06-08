@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../services/backend.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-blog',
   templateUrl: './create-blog.component.html',
@@ -8,7 +8,7 @@ import { BackendService } from '../services/backend.service';
 })
 export class CreateBlogComponent {
 
-  constructor(private backendService:BackendService){}
+  constructor(private backendService:BackendService,private router:Router){}
 
   public title:string=""
   public description:string=""
@@ -18,6 +18,7 @@ export class CreateBlogComponent {
     this.backendService.addBlog(this.title,this.description,this.content).subscribe(
       resp=>{
         console.log(resp)
+        this.router.navigate(['/'])
       },
       err=>{console.log(err)}
     )

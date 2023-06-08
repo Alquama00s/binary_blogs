@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { FormsModule } from '@angular/forms';
 import { BlogViewComponent } from './blog-view/blog-view.component';
+import { ReadBlogComponent } from './read-blog/read-blog.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { BlogViewComponent } from './blog-view/blog-view.component';
     HomeComponent,
     CreateBlogComponent,
     BlogViewComponent,
+    ReadBlogComponent,
 
   ],
   imports: [

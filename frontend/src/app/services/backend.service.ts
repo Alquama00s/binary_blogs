@@ -35,6 +35,11 @@ export class BackendService {
     return this.http.get<Array<Blog>>(BACKEND_URL+"/api/blog/user-blogs",{headers})
   }
 
+  getBlogbyId(id:string):Observable<Blog>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.get<Blog>(BACKEND_URL+"/api/blog/user-blogs/"+id,{headers})
+  }
+
   login() {
     console.log("logging in")
     window.location.href = 'http://localhost:8000/api/auth/login';

@@ -6,8 +6,8 @@ from rest_framework import serializers
 
 class Blog(models.Model):
     id=models.AutoField(primary_key=True)
-    title=models.CharField(max_length=50)
-    description=models.CharField(max_length=100)
+    title=models.CharField(max_length=100)
+    description=models.CharField(max_length=500)
     content=models.TextField()
     tags=models.TextField(blank=True) #comma separated string
     publisher=models.ForeignKey(User,on_delete=models.CASCADE)
