@@ -2,5 +2,7 @@
   <h3 class="card-title">{{blog.title}}</h3>
   <p class="card-description">{{blog.description}}</p>
   <a routerLink="/read-blog/{{blog.id}}" class="card-button">Read More</a>
+  <a class="card-button" routerLink="/create-blog" [queryParams]="{'blogid':blog.id}" *ngIf="author">Edit</a>
+  <a class="card-button" (click)="deleteBlog()" *ngIf="author">Delete</a>
 </div>
 

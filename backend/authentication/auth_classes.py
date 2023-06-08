@@ -4,15 +4,16 @@ from rest_framework.exceptions import AuthenticationFailed
 import jwt
 from user.models import User
 from rest_framework.request import Request
+from backend.settings import AUTH0_PUB_KEY_URL,AUTH0_JWT_AUD
 class Auth0Authentication(BaseAuthentication):
     def authenticate(self, request:Request):
         try:
           access_token_jwt=request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
           # access_token_jwt=request.session["user"]["id_token"]
           # print(access_token_jwt)
-          jwks_client = jwt.PyJWKClient('https://dev-jpwmi4c6wfbzcog1.us.auth0.com/.well-known/jwks.json')
+          jwks_client = jwt.PyJWKClient(AUTH0_PUB_KEY_URL)
           signing_key = jwks_client.get_signing_key_from_jwt(access_token_jwt)
-          decoded=jwt.decode(access_token_jwt,key=signing_key.key,algorithms=['RS256'],audience='uQYdQ7etx0Ypi0LwVa2I6A7RIbRm94Ie')
+          decoded=jwt.decode(access_token_jwt,key=signing_key.key,algorithms=['RS256'],audience=AUTH0_JWT_AUD)
         #   print(decoded)
           user=User.objects.filter(email=decoded['email']).first()
           if(user is None):

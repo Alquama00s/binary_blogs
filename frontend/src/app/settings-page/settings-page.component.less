@@ -1,10 +1,120 @@
 @import '../common-styles/navbar';
+.profile {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  width: 500px; /* Adjust the width as desired */
+  margin: 0 auto; /* Center the div horizontally */
+  display: flex;
+}
 
 .profile-pic {
-  width: 50px;
-  height: 50px;
-  border: 5px solid @accent-color;
+  margin-right: 20px;
+}
+
+.profile-pic img {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  background-size: cover;
-  background-position: center;
+}
+
+.profile-info {
+  text-align: left;
+}
+
+.edit-icon {
+  margin-left: 50px;
+  width: 24px;
+  height: 24px;
+  align-self: flex-end;
+}
+
+.edit-form {
+  width: 400px; /* Adjust the width as desired */
+  margin: 20px auto;
+}
+
+.edit-form h2 {
+  margin-bottom: 10px;
+}
+
+.edit-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.edit-form button {
+  padding: 10px 20px;
+  background-color: @background-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.blog-list-container{
+  padding: 10px;
+}
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: @background-color;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: @accent-color;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.page-link-selected,
+.page-link {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  margin: 0 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.page-link{
+  background-color: @background-color;
+
+}
+
+.page-link-selected{
+  background-color: @accent-color;
+}
+
+.page-link:hover {
+  background-color: @accent-color;
 }

@@ -11,6 +11,9 @@ class UserBlogViewSet(viewsets.ModelViewSet):
     authentication_classes=[Auth0Authentication]
     permission_classes=[Auth0IsAuthenticated]
     serializer_class=BlogSerializer
+    pagination_class=BlogPagination
+    filter_backends=[filters.SearchFilter]
+    search_fields=['title','tags']
 
     def get_queryset(self):
         return Blog.objects.filter(publisher=self.request.user)

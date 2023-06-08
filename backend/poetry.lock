@@ -179,6 +179,20 @@ gmpy = ["gmpy"]
 gmpy2 = ["gmpy2"]
 
 [[package]]
+name = "gunicorn"
+version = "20.1.0"
+description = "WSGI HTTP Server for UNIX"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+eventlet = ["eventlet (>=0.24.1)"]
+gevent = ["gevent (>=1.4.0)"]
+setproctitle = ["setproctitle"]
+tornado = ["tornado (>=0.2)"]
+
+[[package]]
 name = "idna"
 version = "3.4"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -402,7 +416,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "d6734b68612503fc9e4e8f2727f1221e23b06f9739043354b736c008c65aa490"
+content-hash = "e68efac84dd8e15b873a7b215e433657c4548d9bcd4d1c16af81b7f2a88e6697"
 
 [metadata.files]
 asgiref = []
@@ -419,6 +433,7 @@ django-cors-headers = []
 djangorestframework = []
 djangorestframework-simplejwt = []
 ecdsa = []
+gunicorn = []
 idna = []
 more-itertools = []
 packaging = []

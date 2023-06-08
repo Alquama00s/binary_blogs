@@ -7,15 +7,4 @@ export class Blog{
     public tags:string[],
     public authorId:string
   ){}
-
-  toJSON():string{
-    return JSON.stringify(this)
-  }
-
-  static fromJSON(json:string):Blog{
-    const {id,title,description,content,tags,authorId}=JSON.parse(json)
-    return new Blog(id,title,description,content,tags,authorId)
-  }
-
-
 }

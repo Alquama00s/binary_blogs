@@ -2,5 +2,41 @@
   <div class="title">
     Profile 
   </div>
-  <div class="profile-pic" [style.background-image]="'url(' + getUser()?.profile_url + ')'" ></div>
+</div>
+<div class="profile" *ngIf="!edit">
+  <div class="profile-pic">
+    <img src="{{getUser()?.profile_url}}" alt="User Avatar">
+  </div>
+  <div class="profile-info">
+    <h2>{{getUser()?.name}}</h2>
+    <p>Email: {{getUser()?.email}}</p>
+    <p>username: {{getUser()?.username}}</p>
+  </div>
+  <div class="edit-icon" (click)="toggleEdit()">
+    <img src="../../assets/edit.svg" alt="Edit Icon">
+  </div>
+</div>
+
+<div class="edit-form" *ngIf="edit">
+  <h2>Edit Profile</h2>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="name">
+    <label for="location">Username:</label>
+    <input type="text" id="username" name="username" [disabled]="userName.length!=0" [(ngModel)]="userName">
+    <button type="submit" (click)="updateUser()">Save Changes</button>
+  </form>
+</div>
+
+<div class="search-container">
+  <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchTerm">
+  <button class="search-button" (click)="resetSearch()">Search</button>
+</div>
+
+<div *ngFor="let blog of blogs" class="blog-list-container">
+  <app-blog-view  [blog]="blog" [author]="true"></app-blog-view>
+</div>
+
+<div class="pagination">
+  <a [ngClass]="pageNumber==searchPage?'page-link-selected':'page-link'" *ngFor="let pageNumber of pages" href="#" (click)="goToPage(pageNumber)">{{ pageNumber }}</a>
 </div>
