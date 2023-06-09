@@ -14,7 +14,7 @@ The Blog App offers the following features:
 
 
 ## Run using docker
-To run the application using docker just run `bash start_app.sh` from root of the repo.
+To run the application using docker prepare [env.list](./env.list) filr and run `bash start_app.sh` from root of the repo.
 
 ## Setup Instructions
 
